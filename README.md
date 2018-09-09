@@ -1,2 +1,2 @@
-# AngularPractice-
+# AngularPractice
 Go through angular basics
