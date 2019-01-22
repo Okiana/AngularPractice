@@ -8,23 +8,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
-        this.name = 'Alex Smith';
-        this.image = 'favicon.ico';
-        this.color = 'red';
+        this.customer = {
+            id: 1,
+            name: 'Alex Smith',
+            address: {
+                city: 'Anytown',
+                region: 'East',
+                state: 'California',
+                street: 'Any street'
+            }
+        };
         this.hideAddress = false;
-        this.street = 'AngularStreet';
-        this.city = 'AngularCity';
-        this.region = 'West';
     }
-    AppComponent.prototype.addressClick = function () {
-        this.hideAddress = !this.hideAddress;
-    };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "\n      <h1>{{name}}</h1>\n      <p><i> {{name}} is on the {{street}} street in {{city}} city in region {{region}}</i></p>\n      <br/>\n\n      <fieldset>\n      <label>Name: </label> <input [(ngModel)]=\"name\"/>\n      </fieldset>\n    \n      <label><input type=\"checkbox\" [(ngModel)]=\"hideAddres\" />Show/Hide Address</label> \n      <div [hidden]=\"hideAddress\">\n        <fieldset>\n        <label>Street: </label> <input [(ngModel)]=\"street\"/>\n        </fieldset>\n        <fieldset>\n        <label>City: </label> <input [(ngModel)]=\"city\"/>\n        </fieldset>\n        <fieldset>\n          <label>Region: </label>\n          <select [(ngModel)]=\"region\">\n          <option>East</option>\n          <option>North</option>\n          <option>West</option>\n          <option>South</option>\n        </select> \n        </fieldset>\n      </div>\n    ",
+        template: "\n      <h1>{{customer.name}}</h1>\n      <p><i> {{customer.name}} is on the {{customer.address.street}} street in {{customer.address.city}} city \n      in region {{customer.address.region}} in state {{customer.address.state}}</i></p>\n      <br/>\n\n      <fieldset>\n      <label>Name: </label> <input [(ngModel)]=\"customer.name\"/>\n      </fieldset>\n    \n      <label><input type=\"checkbox\" [(ngModel)]=\"hideAddress\" />Show/Hide Address</label> \n      <div [hidden]=\"hideAddress\">\n        <fieldset>\n        <label>Street: </label> <input [(ngModel)]=\"customer.address.street\"/>\n        </fieldset>\n        <fieldset>\n        <label>City: </label> <input [(ngModel)]=\"customer.address.city\"/>\n        </fieldset>\n        <fieldset>\n        <label>State: </label>\n        <select [(ngModel)]=\"customer.address.state\">\n        <option>California</option>\n        <option>Kolorado</option>\n        <option>Quebek</option>\n      </select> \n      </fieldset>\n        <fieldset>\n          <label>Region: </label>\n          <select [(ngModel)]=\"customer.address.region\">\n          <option>East</option>\n          <option>North</option>\n          <option>West</option>\n          <option>South</option>\n        </select> \n        </fieldset>\n      </div>\n    ",
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

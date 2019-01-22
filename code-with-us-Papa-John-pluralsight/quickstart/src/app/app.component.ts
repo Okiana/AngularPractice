@@ -1,27 +1,38 @@
 import { Component } from '@angular/core';
 
+import { Customer } from './module'
+
 @Component({
   selector: 'my-app',
   template: `
-      <h1>{{name}}</h1>
-      <p><i> {{name}} is on the {{street}} street in {{city}} city in region {{region}}</i></p>
+      <h1>{{customer.name}}</h1>
+      <p><i> {{customer.name}} is on the {{customer.address.street}} street in {{customer.address.city}} city 
+      in region {{customer.address.region}} in state {{customer.address.state}}</i></p>
       <br/>
 
       <fieldset>
-      <label>Name: </label> <input [(ngModel)]="name"/>
+      <label>Name: </label> <input [(ngModel)]="customer.name"/>
       </fieldset>
     
-      <label><input type="checkbox" [(ngModel)]="hideAddres" />Show/Hide Address</label> 
+      <label><input type="checkbox" [(ngModel)]="hideAddress" />Show/Hide Address</label> 
       <div [hidden]="hideAddress">
         <fieldset>
-        <label>Street: </label> <input [(ngModel)]="street"/>
+        <label>Street: </label> <input [(ngModel)]="customer.address.street"/>
         </fieldset>
         <fieldset>
-        <label>City: </label> <input [(ngModel)]="city"/>
+        <label>City: </label> <input [(ngModel)]="customer.address.city"/>
         </fieldset>
+        <fieldset>
+        <label>State: </label>
+        <select [(ngModel)]="customer.address.state">
+        <option>California</option>
+        <option>Kolorado</option>
+        <option>Quebek</option>
+      </select> 
+      </fieldset>
         <fieldset>
           <label>Region: </label>
-          <select [(ngModel)]="region">
+          <select [(ngModel)]="customer.address.region">
           <option>East</option>
           <option>North</option>
           <option>West</option>
@@ -33,16 +44,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent  { 
   
-  name = 'Alex Smith';
-  image = 'favicon.ico';
-  color = 'red'; 
+  customer: Customer = {
+    id: 1,
+    name: 'Alex Smith',
+    address: {
+      city: 'Anytown',
+      region: 'East',
+      state: 'California',
+      street: 'Any street'
+    }
+  }
 
   hideAddress = false;
-  street = 'AngularStreet'; 
-  city ='AngularCity';
-  region ='West';
-
-  addressClick(){
-    this.hideAddress = !this.hideAddress;
-  }
 }
