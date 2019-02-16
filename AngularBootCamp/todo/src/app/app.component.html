@@ -3,7 +3,5 @@
 <div *ngIf="!todos.length"> No todos </div>
 
 <ul>
-    <li *ngFor="let todo of todos">
-        {{todo}}
-    </li>
+    <app-todo-item *ngFor="let todo of todos; let i = index" [todo]="todo" (delete)="deleteTodo(i)"></app-todo-item>
 </ul>
